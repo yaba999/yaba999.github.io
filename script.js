@@ -28,7 +28,7 @@ document.getElementById('cobaltForm').addEventListener('submit', function(event)
     .then(response => response.json())
     .then(data => {
         document.getElementById('result').textContent = JSON.stringify(data, null, 2);
-        openLinkInNewTab(data.url);
+        download(data.url, "test.mp4", "video/mp4")
     })
     .catch(error => {
         console.error('Error fetching data:', error);
