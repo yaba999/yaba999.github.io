@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cobalt API Example</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Link To Video</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Cobalt API Example</h1>
+        <h1>Link To Video</h1>
         <form id="cobaltForm">
             <div class="form-group">
                 <label for="url">URL:</label>
-                <input type="text" id="url" name="url" required>
+                <input type="text" id="url" name="url" required><br>
+                <label for="file">Open txt File:</label>
+                <input type="file" id="file" name="file">
             </div>
-            <button type="submit">Fetch Data</button>
+            <button type="submit">Download</button>
         </form>
         <pre id="result"></pre>
     </div>
