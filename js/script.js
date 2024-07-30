@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const rootDir = "source videos/";
+    const rootDir = "source_videos/";
     const foldersList = document.getElementById("folders-list");
     const mediaContainer = document.getElementById("media-container");
 
