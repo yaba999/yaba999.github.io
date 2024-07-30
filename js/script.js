@@ -9,21 +9,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (['mp4', 'webm', 'ogg'].includes(ext)) {
             mediaElement = document.createElement("video");
-            mediaElement.width = 640;
-            mediaElement.height = 360;
             mediaElement.controls = true;
 
             const sourceElement = document.createElement("source");
-            sourceElement.src = `videos/${folderName}/${mediaName}`;
-            sourceElement.type = `video/${ext}`;
+            sourceElement.src = `${rootDir}${folderName}/${mediaName}`;
 
             mediaElement.appendChild(sourceElement);
         } else if (['jpg', 'jpeg', 'png', 'gif'].includes(ext)) {
             mediaElement = document.createElement("img");
-            mediaElement.src = `images/${folderName}/${mediaName}`;
+            mediaElement.src = `${rootDir}${folderName}/${mediaName}`;
             mediaElement.alt = mediaName;
-            mediaElement.width = 640;
-            mediaElement.height = 360;
         } else {
             mediaElement = document.createElement("span");
             mediaElement.textContent = `Unsupported file type: ${mediaName}`;
@@ -37,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
+                const htmlDoc = parser.parseFromString(data, "text/html");
                 const mediaLinks = Array.from(htmlDoc.querySelectorAll("a"))
                     .filter(link => !link.href.endsWith("/"));
 
@@ -74,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 listItem.className = "folder";
 
                 const linkElement = document.createElement("a");
-                linkElement.TextContent = folderName;
+                linkElement.textContent = folderName;
                 linkElement.href = `#${folderName}`;
                 linkElement.onclick = () => loadMedia(folderName);
                 listItem.appendChild(linkElement);
