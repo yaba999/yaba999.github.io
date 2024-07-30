@@ -44,7 +44,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     listItem.appendChild(mediaElement);
                     listItem.appendChild(document.createTextNode(mediaName));
                     mediaList.appendChild(listItem);
-                })
+                });
+
+                const subFolderLinks = Array.from(htmlDoc.querySelectorAll("a"))
+                    .filter(link => link.href.endsWith("/"));
+                
+                    subFolderLinks.forEach(link => {
+                        const subFolderName = link.textContent;
+                        const subFolderListItem = document.createElement("li");
+                        const subFolderLinkElement = document.createElement("a");
+                        subFolderLinkElement.textContent = subFolderName;
+                        subFolderLinkElement.onclick = () => loadMedia(`${folderName}/${subFolderName}`);
+                        subFolderListItem.className = "folder";
+                        subFolderListItem.appendChild(subFolderLinkElement);
+                        foldersList.appendChild(subFolderListItem);
+                    })
             })
     }
 
