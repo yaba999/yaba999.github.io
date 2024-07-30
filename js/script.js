@@ -70,6 +70,14 @@ document.addEventListener("DOMContentLoaded", function() {
         fetchMedia(folderName, mediaList);
     }
 
+    // test
+    let vid = document.createElement("video");
+    vid.controls = true;
+    let src = document.createElement("source");
+    src.src = `${rootDir}b/video.mp4`
+    vid.appendChild(src);
+    mediaContainer.appendChild(vid);
+
     fetch(rootDir)
         .then(response => response.text())
         .then(data => {
